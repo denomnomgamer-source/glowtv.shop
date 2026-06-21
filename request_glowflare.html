@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Access | Glowflare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="the-glow-network.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowflare: { DEFAULT: '#F38020', dark: '#D97018' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-10 rounded-lg shadow-lg border border-gray-200 max-w-md w-full text-center">
+        <h1 class="text-2xl font-bold mb-4">Request Internal Access</h1>
+        <p class="text-gray-600 mb-6">To gain access to the private network, please send your credentials and request to our security team:</p>
+        
+        <a href="mailto:NOVOHC-499@proton.me" class="block bg-glowflare text-white font-bold py-3 rounded-lg hover:bg-orange-600 transition mb-4">
+            Send Email
+        </a>
+        
+        <div class="p-3 bg-gray-100 rounded border border-gray-200 text-sm font-mono text-gray-700 break-all">
+            NOVOHC-499@proton.me
+        </div>
+        
+        <button onclick="window.history.back()" class="mt-6 text-gray-500 hover:text-gray-800 underline text-sm">Back</button>
+    </div>
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+if (e.key === "F12") e.preventDefault();
+if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+const threshold = 160;
+
+const widthDiff = window.outerWidth - window.innerWidth > threshold;
+const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+const start = performance.now();
+debugger;
+const end = performance.now();
+const debugTime = end - start > 5;
+
+if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+devtoolsOpen = true;
+
+document.body.innerHTML = `
+<div style="
+font-family: system-ui;
+color: #ff3b6b;
+text-align: center;
+padding-top: 20vh;
+font-size: 24px;
+">
+🔒 Glowflare Protection Enabled<br><br>
+Inspecting is disabled.
+</div>`;
+}
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Onion-Location" content="http://glowlinh5msygm5hwqy5uyu5ouey6r4b2uvccfzqo2svugdlvgc4a6ad.onion/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOWTV | PRIVATE IP TV SERCICE</title>
+    <style>
+        :root { --accent: #ff3e3e; --bg: #050505; --text: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Background Movie Wall */
+        .poster-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px; opacity: 0.15; z-index: -2; filter: grayscale(1) blur(2px);
+            pointer-events: none;
+        }
+        .poster-grid img { width: 100%; height: auto; border-radius: 5px; }
+
+        /* Dark Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, var(--bg) 90%);
+            z-index: -1;
+        }
+
+        /* Main Content */
+        .content {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 20px;
+        }
+
+        .logo { font-size: 3rem; font-weight: 900; color: var(--accent); letter-spacing: 5px; margin-bottom: 10px; }
+        h1 { font-size: clamp(2rem, 8vw, 4rem); text-transform: uppercase; margin-bottom: 20px; }
+        p { max-width: 600px; color: #aaa; margin-bottom: 40px; font-size: 1.2rem; }
+
+        .btn {
+            background: var(--accent); color: white; text-decoration: none;
+            padding: 20px 40px; border-radius: 50px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.4s;
+            box-shadow: 0 0 30px rgba(255, 62, 62, 0.4);
+        }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(255, 62, 62, 0.6); }
+
+        footer { position: absolute; bottom: 30px; width: 100%; color: #444; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="poster-grid" id="posterGrid">
+        </div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <div class="logo">GLOWNET</div>
+        <h1>Access Restricted</h1>
+        <p>The premium IPTV vault is currently <strong>Private</strong>. We are only accepting verified members for the next rollout.</p>
+        
+        <a href="order.html" class="btn">
+            Request Private Access
+        </a>
+
+        <footer>
+            &copy; 2026 GLOWNET. VERIFIED ENCRYPTED NETWORK.
+        </footer>
+    </div>
+
+    <script>
+        // Fetches trending movies from TMDB to make the background look "active"
+        async function loadPosters() {
+            const grid = document.getElementById('posterGrid');
+            try {
+                // Using a public trending API for the "big guy" look
+                const response = await fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=15d2ea6d0dc1d241f360a31d2445e56e');
+                const data = await response.json();
+                
+                data.results.forEach(movie => {
+                    const img = document.createElement('img');
+                    img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+                    grid.appendChild(img);
+                });
+            } catch (err) {
+                console.log("Poster wall failed to load, using fallback colors.");
+            }
+        }
+        loadPosters();
+    </script>
+</body>
+</html>

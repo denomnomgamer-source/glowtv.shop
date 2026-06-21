@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WAF Rulesets | Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://glowlinks.net/waf-rulesets" />
+
+<link rel="alternate" href="https://glowlinks.net/waf-rulesets" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/waf-rulesets" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/waf-rulesets" hreflang="en-US" />
+
+<link rel="icon" type="image/png" href="the-glow-network.png">
+</head>
+<body class="bg-white p-10 font-sans">
+    <h1 class="text-3xl font-bold mb-4">WAF Rulesets</h1>
+    <p class="text-gray-600 mb-6">Manage internal security policies. Use the <code class="bg-gray-100 px-1">/rulesets/modify</code> endpoint to push blocklists to specific regional nodes.</p>
+    <div class="bg-gray-900 p-4 rounded text-green-400 font-mono text-sm">
+        POST /v1/waf/rulesets/update<br>
+        {"action": "BLOCK", "pattern": "xss_injection"}
+    </div>
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+if (e.key === "F12") e.preventDefault();
+if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+const threshold = 160;
+
+const widthDiff = window.outerWidth - window.innerWidth > threshold;
+const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+const start = performance.now();
+debugger;
+const end = performance.now();
+const debugTime = end - start > 5;
+
+if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+devtoolsOpen = true;
+
+document.body.innerHTML = `
+<div style="
+font-family: system-ui;
+color: #ff3b6b;
+text-align: center;
+padding-top: 20vh;
+font-size: 24px;
+">
+🔒 Glowflare Protection Enabled<br><br>
+Inspecting is disabled.
+</div>`;
+}
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

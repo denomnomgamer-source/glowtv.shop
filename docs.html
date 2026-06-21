@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | Glowflare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://glowlinks.net/docs" />
+
+<link rel="alternate" href="https://glowlinks.net/docs" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/docs" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/docs" hreflang="en-US" />
+
+<link rel="icon" type="image/png" href="the-glow-network.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowflare: { DEFAULT: '#F38020' },
+                        darkbg: '#0F172A',
+                        surface: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden pt-16 flex h-screen">
+    <!-- Basic Nav Included for Link continuity -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='glowflare.html'">
+                    <span class="font-extrabold text-2xl tracking-tight text-gray-900">Glow<span class="text-glowflare">flare</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="infrastructure.html" class="text-gray-600 hover:text-glowflare font-medium">Infrastructure</a>
+                    <a href="nodes.html" class="text-gray-600 hover:text-glowflare font-medium">Nodes</a>
+                    <a href="tor.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Tor/Darkweb</a>
+                    <a href="docs.html" class="text-glowflare font-medium">Internal Docs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <aside class="w-64 border-r border-gray-200 h-full fixed pt-8 px-6 bg-gray-50">
+        <h4 class="font-bold text-gray-500 uppercase tracking-wider text-xs mb-4">API Reference</h4>
+        <ul class="space-y-2 text-sm text-gray-600">
+            <li><a href="docs.html" class="text-glowflare font-bold">Authentication</a></li>
+            <li><a href="waf-rulesets.html" class="hover:text-glowflare">WAF Rulesets</a></li>
+            <li><a href="purge-cache.html" class="hover:text-glowflare">Purge Cache</a></li>
+            <li><a href="node-management.html" class="hover:text-glowflare">Node Management</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 p-10 bg-white overflow-y-auto">
+        <h1 class="text-3xl font-bold mb-4">API Authentication</h1>
+        <p class="text-gray-600 mb-6">All requests to the internal Glowflare API must include your department's Bearer token in the Authorization header. Because this is a private internal API, access is heavily audited.</p>
+        
+        <div class="bg-gray-900 rounded-lg p-4 text-gray-300 font-mono text-sm overflow-x-auto mb-8 shadow-inner">
+            <span class="text-blue-400">curl</span> -X GET "https://api.internal.glow/v1/nodes/status" \<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-H <span class="text-green-400">"Authorization: Bearer GLOW_SECRET_TOKEN"</span> \<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-H <span class="text-green-400">"Content-Type: application/json"</span>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-4">Rate Limits</h2>
+        <p class="text-gray-600">Internal services have a soft limit of 10,000 requests per minute. Exceeding this limit will result in a <code class="bg-gray-100 text-red-500 px-1 rounded">429 Too Many Requests</code> response and an alert fired to PagerDuty.</p>
+    </main>
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+if (e.key === "F12") e.preventDefault();
+if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+const threshold = 160;
+
+const widthDiff = window.outerWidth - window.innerWidth > threshold;
+const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+const start = performance.now();
+debugger;
+const end = performance.now();
+const debugTime = end - start > 5;
+
+if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+devtoolsOpen = true;
+
+document.body.innerHTML = `
+<div style="
+font-family: system-ui;
+color: #ff3b6b;
+text-align: center;
+padding-top: 20vh;
+font-size: 24px;
+">
+🔒 Glowflare Protection Enabled<br><br>
+Inspecting is disabled.
+</div>`;
+}
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

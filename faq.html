@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="the-glow-network.png">
+    <meta http-equiv="Onion-Location" content="http://glowtvmeelsx6xr5ozfwxxspdeujufbbe3jxvigylwyxynlekw3dcmad.onion/" />
+    <title>FAQ | Glownet Private IPTV</title>
+    <style>
+        :root {
+            --accent: #ff3e3e;
+            --bg: #050505;
+            --card: rgba(18, 18, 18, 0.8);
+            --text: #ffffff;
+            --muted: #888;
+            --gold: #d8c8a0;
+            --success: #00ff00;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+
+        .poster-grid {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px; opacity: 0.1; z-index: -2; filter: grayscale(1) blur(3px);
+            pointer-events: none;
+        }
+        .poster-grid img { width: 100%; height: auto; border-radius: 5px; }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 10%, var(--bg) 80%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px; margin: 60px auto; padding: 20px;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .header { text-align: center; margin-bottom: 40px; }
+        .logo { font-size: 2.5rem; font-weight: 900; color: var(--accent); letter-spacing: 4px; margin-bottom: 10px; }
+        h1 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .header p { color: var(--muted); font-weight: bold; }
+
+        .faq-item {
+            background: var(--card);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .faq-item:hover { border-color: var(--accent); }
+
+        .faq-check { display: none; }
+
+        .faq-question {
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 { font-size: 1.1rem; color: var(--text); padding-right: 20px; }
+        .hint { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; font-weight: 900; white-space: nowrap; }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .faq-content-padding { padding: 0 25px 25px 25px; }
+
+        .faq-check:checked ~ .faq-answer { max-height: 1000px; }
+        .faq-check:checked ~ .faq-question .hint { color: var(--accent); content: "COLLAPSE"; }
+
+        .faq-answer p { color: #ccc; line-height: 1.6; margin-bottom: 15px; font-size: 0.95rem; }
+        .bullets { list-style: none; margin-bottom: 15px; }
+        .bullets li { color: var(--muted); font-size: 0.9rem; margin-bottom: 8px; padding-left: 20px; position: relative; }
+        .bullets li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+        
+        strong { color: var(--gold); }
+        code { background: #000; color: var(--success); padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+
+        .footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; text-transform: uppercase; }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 900;
+            border: 1px solid rgba(216, 200, 160, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--gold); color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="poster-grid" id="posterGrid"></div>
+    <div class="overlay"></div>
+
+    <div class="container">
+        <a href="glowtv.html" class="back-btn">← BACK TO HOMEPAGE</a>
+        
+        <header class="header">
+            <div class="logo">GLOWNET</div>
+            <h1>Frequently Asked Questions</h1>
+            <p>Answers to the most common questions about Glownet IPTV.</p>
+        </header>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-personal" class="faq-check" />
+  <label for="faq-personal" class="faq-question">
+    <h3>Will you ever ask for personal information?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      No. We will <strong>never</strong> ask for personal details such as:
+    </p>
+    <ul class="bullets">
+      <li>IP addresses</li>
+      <li>Names</li>
+      <li>Bank account details</li>
+      <li>Credit card numbers</li>
+      <li>Social security numbers</li>
+      <li>Any other sensitive identity data</li>
+    </ul>
+    <p>
+      Glownet IPTV is built on <em>privacy and freedom</em>. We only need your email to activate service,
+      and payment is handled in crypto. No surveillance, no hidden data collection, no bullshit.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-trial" class="faq-check" />
+  <label for="faq-trial" class="faq-question">
+    <h3>Why does the Trial Plan cost €25 for 4 weeks?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      The Trial Plan is priced at <strong>€25 for 4 weeks</strong> and is valid once per customer.
+      It includes 3,000+ live channels and limited access to Netflix, Disney+, HBO Max, Prime Video,
+      and other streaming services.
+    </p>
+    <p>
+      The cost per week is higher than yearly plans because the trial is designed as a
+      <strong>risk‑free test</strong>. You pay for flexibility — no long commitment, no contracts,
+      just a short period to experience Glownet IPTV before upgrading.
+    </p>
+    <p>
+      <strong>Important:</strong> The trial is not a substitute for a full subscription. It is
+      strictly one‑time access, and <em>abuse or repeated use will not be tolerated</em>.
+    </p>
+    <p>
+      <strong>Note:</strong> The trial is <em>not valid</em> during major sports events or
+      end‑of‑year holidays such as Christmas. These high‑demand periods require a full subscription.
+    </p>
+    <p>
+      If you enjoy the trial, upgrading to Standard (€60/year) or Premium (€100/year) gives you
+      full access at the best value.
+    </p>
+  </div>
+</div>
+
+<section class="features">
+  <div class="feature-card faq-item">
+    <input type="checkbox" id="faq1" class="faq-check" />
+    <label for="faq1" class="faq-question">
+      <h3>What devices are supported?</h3>
+      <p class="hint">Click to expand</p>
+    </label>
+    <div class="faq-answer">
+      <p>Our service works on IPTV boxes, Smart TVs, desktops, laptops, phones, and tablets.</p>
+      <ul class="bullets">
+        <li>Amazon Firestick</li>
+        <li>Android TV / Nvidia Shield</li>
+        <li>Samsung & LG Smart TVs</li>
+        <li>MAG & Formuler IPTV boxes</li>
+        <li>Windows / macOS desktops</li>
+        <li>iOS & Android phones/tablets</li>
+        <li>Everything that can install IPTV Smarters, TiviMate, Smart IPTV, GSE Smart IPTV or build in receiver</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-vod" class="faq-check" />
+  <label for="faq-vod" class="faq-question">
+    <h3>How do I access Netflix, Disney+, HBO Max, and others?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      The listed platforms — <strong>Netflix, Disney+, HBO Max, Prime Video, Videoland, SkyShowtime,
+      Apple TV+, Hulu, Paramount+, Peacock</strong> — are included in your plan.
+    </p>
+    <p>
+      You do <strong>not</strong> need separate accounts or logins for each service. Once your
+      Glownet IPTV subscription is activated, you can access all of them directly through the
+      <strong>VOD section inside the app</strong>.
+    </p>
+    <p>
+      This means one subscription unlocks everything: movies, series, and shows from those platforms,
+      without juggling multiple apps or passwords.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-sanctions" class="faq-check" />
+  <label for="faq-sanctions" class="faq-question">
+    <h3>Does Glownet IPTV work in sanctioned countries like Russia?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Yes. Glownet IPTV is <strong>not geo‑locked</strong> and works worldwide, including Russia and other regions
+      under sanctions. Access is delivered through secure servers and crypto payments, so restrictions do not apply.
+    </p>
+    <p>
+      The only exception is <strong>North Korea</strong>, where access is not possible.
+    </p>
+    <p>
+      Wherever you are, you can stream channels and VOD without regional blocks.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-malware" class="faq-check" />
+  <label for="faq-malware" class="faq-question">
+    <h3>Do you send malware to my device?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      No. Glownet IPTV does <strong>not</strong> send malware, spyware, or any harmful software to your device.
+    </p>
+    <p>
+      We only work with <strong>popular, trusted IPTV apps</strong> such as IPTV Smarters Player, TiviMate,
+      Smart IPTV, and GSE Smart IPTV. You install these apps yourself from their official sources.
+    </p>
+    <p>
+      What we provide is a secure <strong>playlist URL</strong> that unlocks live channels and the VOD section
+      (Netflix, Disney+, HBO Max, Prime Video, Videoland, SkyShowtime, Apple TV+, Hulu, Paramount+, Peacock).
+      Once your subscription is activated, you simply load the playlist — no extra apps, no shady downloads.
+    </p>
+    <p>
+      Your device stays safe. You control the app, we provide the access.
+    </p>
+  </div>
+</div>
+
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-recording" class="faq-check" />
+  <label for="faq-recording" class="faq-question">
+    <h3>How do I record content?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Recording is simple: press the <strong>Record button</strong> on screen or the record button on
+      your TV/IPTV box remote. The first time you record, the app will ask where to save your files. it allows recording from Netflix and all other streaming services listed.
+    </p>
+    <p>
+      You can choose between:
+    </p>
+    <ul class="bullets">
+      <li><strong>Local storage:</strong> Save directly to your device or USB drive.</li>
+      <li><strong>Standard Plan:</strong> 250 GB secure cloud storage for recordings.</li>
+      <li><strong>Premium Plan:</strong> 1 TB secure cloud storage for extended archives.</li>
+    </ul>
+    <p>
+      This way you can keep highlights or entire seasons safely stored, either locally or in the cloud,
+      depending on your plan.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-pay" class="faq-check" />
+  <label for="faq-pay" class="faq-question">
+    <h3>How do I pay?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>We accept Bitcoin (BTC) and Monero (XMR). After ordering, send payment and confirm with TXID.</p>
+    <p>
+      We do not accept bank transfers or credit cards because they come with <strong>unasked fees,
+      surveillance, and third‑party control</strong>. Crypto payments mean you pay exactly what you owe,
+      with no hidden charges, no middlemen, and no risk of your data being sold. It’s about
+      <em>privacy, freedom, and transparency</em> — you stay in control of your money.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-contract" class="faq-check" />
+  <label for="faq-contract" class="faq-question">
+    <h3>Do I need a contract?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>No contracts. You pay Yearly in crypto and can cancel anytime.</p>
+    <p>
+      We believe in <strong>freedom and privacy</strong> — you control your access, not a corporation.
+      Subscription traps and hidden fees are designed to lock customers in and bleed them dry.
+      Our model is simple: <em>pay for what you use, when you want</em>. No personal data, no
+      third‑party billing, no scams.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-privacy" class="faq-check" />
+  <label for="faq-privacy" class="faq-question">
+    <h3>Is my privacy protected?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Yes — privacy is at the core of Glownet IPTV.
+    </p>
+    <ul class="bullets">
+      <li>No personal data required beyond your email for activation.</li>
+      <li>Payments are crypto‑only (BTC or XMR), no banks or credit cards.</li>
+      <li>No hidden fees, no third‑party billing, no surveillance.</li>
+    </ul>
+    <p>
+      You stay in control of your access and your information. Freedom and privacy are guaranteed.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-record" class="faq-check" />
+  <label for="faq-record" class="faq-question">
+    <h3>Is catch-up & recording available on sports channels?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Yes, you can rewind and record up to 365 days of content, including sports events.
+    </p>
+    <p>
+      To make recording practical, every plan comes with secure cloud storage:
+    </p>
+    <ul class="bullets">
+      <li><strong>Standard Plan:</strong> 250 GB cloud storage for your recordings</li>
+      <li><strong>Premium Plan:</strong> 1 TB cloud storage for extended archives</li>
+    </ul>
+    <p>
+      This way you never run out of space, whether you’re saving highlights or entire seasons.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-yearly" class="faq-check" />
+  <label for="faq-yearly" class="faq-question">
+    <h3>Is this yearly or monthly?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      All plans are billed <strong>per year</strong>. There are no monthly renewals or hidden auto‑charges.
+    </p>
+    <p>
+      This keeps things simple: one payment, one year of access. No surprise renewals, no subscription traps.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-renew" class="faq-check" />
+  <label for="faq-renew" class="faq-question">
+    <h3>What happens if I don’t renew?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      If you don’t renew, your access simply stops at the end of your paid year.
+    </p>
+    <p>
+      There are no penalties, no auto‑billing, and no contracts. You can come back anytime and start fresh.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-share" class="faq-check" />
+  <label for="faq-share" class="faq-question">
+    <h3>Can I share my account?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Sharing depends on your plan:
+    </p>
+    <ul class="bullets">
+      <li><strong>Standard Plan:</strong> Single device only, not shareable. ( casting/screen mirror will work fine )</li>
+      <li><strong>Premium Plan:</strong> Up to 4 devices supported at the same time.</li>
+    </ul>
+    <p>
+      This way Premium users can enjoy family or multi‑device setups, while Standard remains streamlined.
+    </p>
+  </div>
+</div>
+
+        <div class="feature-card">
+          <h3>How fast is activation?</h3>
+          <p>Once your TXID is confirmed, access is usually activated 45 minutes and 2 hours max. because Blockcain confirmations</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Can I use this on Firestick?</h3>
+          <p>Yes, Firestick and Android TV devices are supported via IPTV apps.</p>
+        </div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-adult" class="faq-check" />
+  <label for="faq-adult" class="faq-question">
+    <h3>What premium adult channels are included?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>
+      Yes — Premium Plan includes access to adult entertainment channels.
+    </p>
+    <ul class="bullets">
+      <li>Hustler HD TV</li>
+      <li>Penthouse Passion</li>
+      <li>Brazzers TV</li>
+      <li>Redlight HD TV</li>
+      <li>Passion XXX</li>
+      <li>Vivid TV</li>
+      <li>Dorcel TV</li>
+      <li>OX-AX TV</li>
+      <li>Passie TV</li>
+      <li>Pinko TV</li>
+      <li>Playboy TV</li>
+      <li>Penthouse Reality</li>
+      <li>Pink Erotic TV ( included Pink Erotic 7 and 8 )</li>
+      <li>Meiden Van Holland TV</li>
+      <li>Bang Bros TV</li>
+      <li>O-La-La TV</li>
+      <li>Russian night TV</li>
+      <li>Gay TV Online</li>
+      <li><em>…and more for a fun night :)</em></li>
+    </ul>
+    <p>
+      These are provided as part of the premium package. You’ll be able to see the complete lineup and specials after subscription.
+    </p>
+  </div>
+</div>
+
+<div class="feature-card faq-item">
+  <input type="checkbox" id="faq-support" class="faq-check" />
+  <label for="faq-support" class="faq-question">
+    <h3>Do you provide support?</h3>
+    <p class="hint">Click to expand</p>
+  </label>
+  <div class="faq-answer">
+    <p>Yes, 24/7 email support. Priority support is included with the Premium Plan.</p>
+    <p>
+      To contact us, send an email to:  
+      <strong>NOVOHC-499@proton.me</strong>  
+      with the subject line: <code>IPTV</code>
+    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2026 GLOWNET. VERIFIED ONION SERVICE.</p>
+        </footer>
+    </div>
+
+    <script>
+        async function loadPosters() {
+            const grid = document.getElementById('posterGrid');
+            try {
+                const response = await fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=15d2ea6d0dc1d241f360a31d2445e56e');
+                const data = await response.json();
+                data.results.forEach(movie => {
+                    const img = document.createElement('img');
+                    img.src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
+                    grid.appendChild(img);
+                });
+            } catch (err) { console.log("Posters went home early."); }
+        }
+        loadPosters();
+    </script>
+</body>
+</html>

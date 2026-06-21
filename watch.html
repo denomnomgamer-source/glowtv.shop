@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowmovies | Free Watch |  GlowTV Private IPTV</title>
+    <meta name="Glowmovies The Glow-Network" content="The best collection Movies, Releases, and GlowTV, IPTV Services, 24/7 ad free radio, and many more - content. Updated daily.">
+    <link rel="icon" type="image/png" href="the-glow-network.png">
+
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050509;
+      color: #f5f5f5;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: linear-gradient(to bottom, #050509 60%, transparent);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 20px;
+      text-transform: uppercase;
+      color: #ff3b6b;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 0 24px 40px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 55vh;
+      min-height: 320px;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      background: radial-gradient(circle at top, #2b2f4a, #050509 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45);
+      transform: scale(1.05);
+    }
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5,5,9,0.95), rgba(5,5,9,0.2));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 60%;
+    }
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .hero-meta {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+    .hero-overview {
+      font-size: 14px;
+      opacity: 0.9;
+      max-height: 80px;
+      overflow: hidden;
+    }
+
+    /* PLAYER PANEL */
+    .player-panel {
+      margin-top: 18px;
+      border-radius: 14px;
+      background: #0b0d14;
+      border: 1px solid #262938;
+      padding: 16px;
+    }
+    .player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .player-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .server-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .server-btn {
+      background: #11131a;
+      border: 1px solid #303347;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .server-btn:hover {
+      background: #1a1d2b;
+    }
+
+    iframe {
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      border: none;
+      background: black;
+    }
+
+    /* NOTICE */
+    .notice {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ff3b6b;
+      opacity: 0.9;
+    }
+
+    /* SEASON SELECTOR */
+    .season-select {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    select {
+      background: #11131a;
+      border-radius: 999px;
+      border: 1px solid #303347;
+      color: #f5f5f5;
+      font-size: 14px;
+      padding: 6px 12px;
+      outline: none;
+    }
+
+    /* EPISODES */
+    .episodes {
+      margin-top: 20px;
+    }
+    .episode-btn {
+      padding: 6px 10px;
+      background: #11131a;
+      border-radius: 8px;
+      border: 1px solid #303347;
+      font-size: 12px;
+      cursor: pointer;
+      margin: 4px;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .episode-btn:hover {
+      background: #1a1d2b;
+    }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b0d14;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #262938;
+    border-radius: 10px;
+    border: 2px solid #0b0d14;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff3b6b;
+}
+
+/* FIREFOX SUPPORT */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #262938 #0b0d14;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">GlowMovies</div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-backdrop" id="heroBackdrop"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-title" id="title"></div>
+      <div class="hero-meta" id="meta"></div>
+      <div class="hero-overview" id="overview"></div>
+    </div>
+  </div>
+
+  <!-- PLAYER PANEL -->
+  <div class="player-panel">
+    <div class="player-header">
+      <div class="player-title">Choose Server</div>
+      <div class="server-buttons" id="servers"></div>
+    </div>
+
+<iframe id="player" allowfullscreen allow="fullscreen" referrerpolicy="origin"></iframe>
+
+    <div class="notice" id="notice" style="display:none;">
+      ⚠ If Media not available on this server — try switching servers.
+    </div>
+  </div>
+
+  <!-- SEASON SELECTOR -->
+  <div class="season-select" id="seasonContainer" style="display:none;">
+    <h3>Seasons</h3>
+    <select id="seasonSelect" onchange="changeSeason()"></select>
+  </div>
+
+  <!-- EPISODES -->
+  <div class="episodes" id="episodes"></div>
+
+<footer style="
+    margin-top: 40px;
+    padding: 30px 24px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.7;
+    color: #f5f5f5;
+    border-top: 1px solid #262938;
+    background: linear-gradient(to top, #050509 70%, transparent);
+">
+    <div style="margin-bottom: 6px; font-weight: 700; letter-spacing: 0.06em; color:#ff3b6b;">
+        GlowMovies © 2026
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        This platform does <b>not</b> store any data.
+    </div>
+
+    <a href="legal.html" style="color:#ff3b6b; font-weight:600; text-decoration:none; margin-right:15px;">
+        DMCA Policy
+    </a>
+
+    <a href="about_glowmovies.html" style="color:#ff3b6b; font-weight:600; text-decoration:none;">
+        About Us
+    </a>
+</footer>
+
+</main>
+
+<script>
+const apiKey = "5378953b110dc4468b85ce936fbce1cc";
+
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+const type = urlParams.get("type");
+
+let currentSeason = 1;
+
+async function loadDetails() {
+    const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}`);
+    const data = await res.json();
+
+    document.getElementById("heroBackdrop").style.backgroundImage =
+      `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`;
+
+    document.getElementById("title").innerText = data.title || data.name;
+    document.getElementById("meta").innerText =
+      ((data.release_date || data.first_air_date || "").substring(0,4)) +
+      " • Rating " + data.vote_average.toFixed(1);
+
+    document.getElementById("overview").innerText = data.overview;
+
+    loadServers();
+
+    if (type === "tv") {
+        loadSeasons(data.number_of_seasons);
+        loadEpisodes();
+    }
+}
+
+function loadSeasons(total) {
+    const container = document.getElementById("seasonContainer");
+    const select = document.getElementById("seasonSelect");
+
+    container.style.display = "block";
+    select.innerHTML = "";
+
+    for (let i = 1; i <= total; i++) {
+        const opt = document.createElement("option");
+        opt.value = i;
+        opt.innerText = "Season " + i;
+        select.appendChild(opt);
+    }
+}
+
+function changeSeason() {
+    currentSeason = document.getElementById("seasonSelect").value;
+    loadEpisodes();
+    loadServers(currentSeason, 1);
+}
+
+function loadServers(season = 1, episode = 1) {
+    const servers = document.getElementById("servers");
+    servers.innerHTML = "";
+
+const movieServers = [
+    {name: "Alpha", url: `https://ezvidapi.com/embed/movie/${id}?provider=vidsrc`},
+    {name: "Bravo", url: `https://vidsrc-embed.ru/embed/movie?tmdb=${id}/`},
+    {name: "Charlie", url: `https://vidrock.ru/movie/${id}`},
+    {name: "Delta", url: `https://vidlink.pro/movie/${id}`},
+    {name: "Echo", url: `https://multiembed.mov/?video_id=${id}&tmdb=1`}
+];
+
+const tvServers = [
+    {name: "Alpha", url: `https://ezvidapi.com/embed/tv/${id}/${season}/${episode}?provider=vidsrc`},
+    {name: "Bravo", url: `https://www.2embed.online/embed/tv/${id}/${season}/${episode}`},
+    {name: "Charlie", url: `https://vidsrc-embed.ru/embed/tv?tmdb=${id}&episode=${episode}&season=${season}`},
+    {name: "Delta", url: `https://vidlink.pro/tv/${id}/${season}/${episode}`},
+    {name: "Echo", url: `https://vidrock.ru/tv/${id}/${season}/${episode}`}
+];
+
+    const list = type === "movie" ? movieServers : tvServers;
+
+    list.forEach(s => {
+        const btn = document.createElement("div");
+        btn.className = "server-btn";
+        btn.innerText = s.name;
+        btn.onclick = () => switchServer(s.url);
+        servers.appendChild(btn);
+    });
+
+    switchServer(list[0].url);
+}
+
+function switchServer(url) {
+    const player = document.getElementById("player");
+    const notice = document.getElementById("notice");
+
+    notice.style.display = "none";
+    player.src = url;
+
+    setTimeout(() => {
+        if (!player.contentWindow || player.contentWindow.length === 0) {
+            notice.style.display = "block";
+        }
+    }, 3000);
+}
+
+async function loadEpisodes() {
+    const res = await fetch(`https://api.themoviedb.org/3/tv/${id}/season/${currentSeason}?api_key=${apiKey}`);
+    const data = await res.json();
+
+    const epDiv = document.getElementById("episodes");
+    epDiv.innerHTML = "<h3>Episodes</h3>";
+
+    data.episodes.forEach(ep => {
+        const btn = document.createElement("div");
+        btn.className = "episode-btn";
+        btn.style.width = "260px";
+        btn.style.textAlign = "left";
+
+        btn.innerHTML = `
+            ${ep.still_path ? `
+                <img src="https://image.tmdb.org/t/p/w300${ep.still_path}" 
+                     style="width:100%; border-radius:6px; margin-bottom:6px;">
+            ` : ""}
+
+            <div style="font-weight:700; margin-bottom:2px;">
+                S${currentSeason}E${ep.episode_number} — ${ep.name || "Untitled"}
+            </div>
+
+            <div style="font-size:11px; opacity:0.7;">
+                ${ep.air_date || "Unknown date"}
+            </div>
+
+            <div style="font-size:11px; opacity:0.6; margin-top:4px; max-width:260px;">
+                ${ep.overview ? ep.overview.substring(0,120) + "..." : "No description available."}
+            </div>
+        `;
+
+        btn.onclick = () => loadServers(currentSeason, ep.episode_number);
+        epDiv.appendChild(btn);
+    });
+}
+
+loadDetails();
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+    if (e.key === "F12") e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+    const threshold = 160;
+
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    const debugTime = end - start > 5;
+
+    if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+        devtoolsOpen = true;
+
+        document.body.innerHTML = `
+            <div style="
+                font-family: system-ui;
+                color: #ff3b6b;
+                text-align: center;
+                padding-top: 20vh;
+                font-size: 24px;
+            ">
+                🔒 Glowflare Protection Enabled<br><br>
+                Inspecting is disabled.
+            </div>`;
+    }
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

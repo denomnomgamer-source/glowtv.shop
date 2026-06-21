@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure | Glowflare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://glowlinks.net/infrastructure" />
+
+<link rel="alternate" href="https://glowlinks.net/infrastructure" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/infrastructure" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/infrastructure" hreflang="en-US" />
+
+<link rel="icon" type="image/png" href="the-glow-network.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowflare: { DEFAULT: '#F38020' },
+                        darkbg: '#0F172A',
+                        surface: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased overflow-x-hidden pt-16">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='glowflare.html'">
+                    <span class="font-extrabold text-2xl tracking-tight text-gray-900">Glow<span class="text-glowflare">flare</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="infrastructure.html" class="text-glowflare font-medium">Infrastructure</a>
+                    <a href="nodes.html" class="text-gray-600 hover:text-glowflare font-medium">Nodes</a>
+                    <a href="tor.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Tor/Darkweb</a>
+                    <a href="docs.html" class="text-gray-600 hover:text-glowflare font-medium">Internal Docs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-darkbg text-white py-20 lg:py-32 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Dark Fiber Backbone.</h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">Our routing runs on proprietary dedicated lines completely air-gapped from tier-1 public carriers.</p>
+        </div>
+    </header>
+
+    <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">Hardware Encryption Standard</h3>
+                <p class="text-gray-600 mb-4">Every packet traversing the Glowflare network is wrapped in AES-256-GCM hardware encryption at the port level before it ever hits a long-haul fiber optic cable. This ensures complete opacity to physical wiretapping.</p>
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> BGP Anycast Routing</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> 100Gbps+ Port Density</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✔</span> EMP-shielded transit hubs</li>
+                </ul>
+            </div>
+            
+            <!-- Architecture Diagram -->
+            <div class="bg-slate-900 rounded-xl p-8 shadow-2xl border border-slate-700">
+                <div class="flex flex-col items-center gap-4">
+                    <div class="text-glowflare font-bold text-sm uppercase tracking-widest mb-2">Network Topology</div>
+                    <div class="w-full h-12 bg-slate-800 border-2 border-slate-600 rounded flex items-center justify-center text-white text-xs font-mono">Central Core (Encrypted)</div>
+                    <div class="flex justify-between w-full px-4">
+                        <div class="h-8 w-px bg-slate-600"></div>
+                        <div class="h-8 w-px bg-slate-600"></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-8 w-full">
+                        <div class="bg-slate-800 border border-slate-600 p-3 rounded text-[10px] text-slate-300 text-center">Node RU-C<br>Moscow</div>
+                        <div class="bg-slate-800 border border-slate-600 p-3 rounded text-[10px] text-slate-300 text-center">Node CH-A<br>Zurich</div>
+                    </div>
+                    <div class="flex justify-center w-full">
+                        <div class="h-6 w-px bg-slate-600"></div>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-600 p-3 rounded w-1/2 text-[10px] text-slate-300 text-center">Node MD-E<br>Chisinau</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+if (e.key === "F12") e.preventDefault();
+if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+const threshold = 160;
+
+const widthDiff = window.outerWidth - window.innerWidth > threshold;
+const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+const start = performance.now();
+debugger;
+const end = performance.now();
+const debugTime = end - start > 5;
+
+if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+devtoolsOpen = true;
+
+document.body.innerHTML = `
+<div style="
+font-family: system-ui;
+color: #ff3b6b;
+text-align: center;
+padding-top: 20vh;
+font-size: 24px;
+">
+🔒 Glowflare Protection Enabled<br><br>
+Inspecting is disabled.
+</div>`;
+}
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tor CDN Service | Glowflare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://glowlinks.net/tor" />
+
+<link rel="alternate" href="https://glowlinks.net/tor" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/tor" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/tor" hreflang="en-US" />
+
+<link rel="icon" type="image/png" href="the-glow-network.png">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowflare: { DEFAULT: '#F38020', dark: '#D97018' },
+                        darkbg: '#0F172A'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center">
+            <a href="glowflare.html" class="flex items-center hover:opacity-80 transition-opacity">
+                <span class="font-extrabold text-2xl tracking-tight">Glow<span class="text-glowflare">flare</span></span>
+            </a>
+            <span class="ml-4 text-gray-400 font-medium">/ Tor CDN</span>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-12 px-4">
+        <h1 class="text-4xl font-extrabold mb-6">The First CDN Optimized for .onion Services</h1>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Glowflare Tor CDN brings enterprise-grade performance to the hidden web. By leveraging distributed, anonymity-preserving edge nodes, we reduce latency and protect your onion service from traffic spikes and DoS attacks without compromising your location privacy.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="text-glowflare text-2xl mb-2">⚡</div>
+                <h3 class="font-bold mb-2">Edge Acceleration</h3>
+                <p class="text-sm text-gray-600">Cache static assets across our distributed onion-space edge network.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="text-glowflare text-2xl mb-2">🛡️</div>
+                <h3 class="font-bold mb-2">DoS Shielding</h3>
+                <p class="text-sm text-gray-600">Absorb high-volume traffic surges before they reach your origin service.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <div class="text-glowflare text-2xl mb-2">🔒</div>
+                <h3 class="font-bold mb-2">Anonymity First</h3>
+                <p class="text-sm text-gray-600">Designed to be metadata-blind. No origin IP leakage, no logs.</p>
+            </div>
+        </div>
+
+        <div class="bg-gray-900 rounded-lg p-6 text-gray-300 font-mono text-sm">
+            <p class="text-glowflare mb-4 font-bold">// Getting Started: Add an Onion Origin</p>
+            POST /v1/tor/cdn/add<br>
+            {<br>
+            &nbsp;&nbsp;"onion_address": "v2c3...xyz.onion",<br>
+            &nbsp;&nbsp;"cache_strategy": "aggressive"<br>
+            }
+        </div>
+    </main>
+
+<script>
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+if (e.key === "F12") e.preventDefault();
+if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+const threshold = 160;
+
+const widthDiff = window.outerWidth - window.innerWidth > threshold;
+const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+const start = performance.now();
+debugger;
+const end = performance.now();
+const debugTime = end - start > 5;
+
+if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+devtoolsOpen = true;
+
+document.body.innerHTML = `
+<div style="
+font-family: system-ui;
+color: #ff3b6b;
+text-align: center;
+padding-top: 20vh;
+font-size: 24px;
+">
+🔒 Glowflare Protection Enabled<br><br>
+Inspecting is disabled.
+</div>`;
+}
+}
+
+setInterval(detectDevTools, 500);
+</script>
+
+</body>
+</html>

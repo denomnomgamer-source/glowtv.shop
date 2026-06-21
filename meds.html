@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta https-equiv="https-Location" content="https://glowlinks.net/meds" />
+  <title>GlowMarket | Drugmarket</title>
+  <meta name="description" content="Get your meds fast and discretely - The best collection of Drugs Darkweb links and GlowTV IPTV Services. Updated daily.">
+  <link rel="canonical" href="https://glowlinks.net/meds" />
+
+<link rel="alternate" href="https://glowlinks.net/meds" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/meds" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/meds" hreflang="en-US" />
+
+  <link rel="icon" type="image/png" href="the-glow-network.png">
+  <style>
+    :root {
+      --accent: #ff3e3e;
+      --bg: #050505;
+      --card: #121212;
+      --text: #ffffff;
+      --muted: #888;
+      --gold: #d8c8a0;
+      --success: #00ff00;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
+
+    .poster-grid {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px; opacity: 0.1; z-index: -2; filter: grayscale(1) blur(3px);
+      pointer-events: none;
+    }
+    .poster-grid img { width: 100%; height: auto; border-radius: 5px; }
+
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle, transparent 10%, var(--bg) 80%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 900px; margin: 60px auto; padding: 20px;
+      display: flex; flex-direction: column; gap: 30px;
+    }
+
+    .header { text-align: center; margin-bottom: 20px; }
+    .logo { font-size: 2.5rem; font-weight: 900; color: var(--accent); letter-spacing: 4px; margin-bottom: 10px; }
+    h1 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    .card {
+      background: rgba(18, 18, 18, 0.8);
+      backdrop-filter: blur(15px);
+      padding: 30px; border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    label { display: block; margin-bottom: 20px; font-weight: 600; color: #ccc; }
+    input, select {
+      width: 100%; padding: 15px; margin-top: 8px;
+      background: #1a1a1a; border: 1px solid #333;
+      border-radius: 10px; color: white; font-size: 1rem;
+      outline: none;
+    }
+    select:focus { border-color: var(--accent); }
+
+    .warning-text {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Fixed Layout: Always single column for products */
+    .plan-options { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 20px; 
+      margin: 20px 0; 
+    }
+
+    .plan-card {
+      padding: 25px; 
+      border: 1px solid #333; 
+      border-radius: 16px;
+      cursor: pointer; 
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+      display: flex; 
+      flex-direction: column;
+      position: relative;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .plan-card:hover { border-color: var(--accent); background: rgba(255, 62, 62, 0.05); transform: translateY(-3px); }
+    .plan-card.active { border-color: var(--accent); background: rgba(255, 62, 62, 0.1); box-shadow: 0 0 20px rgba(255, 62, 62, 0.2); }
+
+    .plan-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    .plan-title { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; }
+    .plan-price { font-weight: 900; color: var(--accent); font-size: 1.3rem; }
+
+    .feature-list { list-style: none; margin-top: 10px; }
+    .feature-list li { font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; padding-left: 18px; position: relative; }
+    .feature-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+
+    .btn {
+      display: block; width: 100%; padding: 20px; margin-top: 20px;
+      background: var(--accent); color: white; text-align: center;
+      text-decoration: none; border-radius: 12px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+      border: none; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255, 62, 62, 0.4); }
+
+    .donation-dropdown { margin-top: 20px; border: 1px solid #333; border-radius: 8px; background: #1a1a1a; }
+    .donation-dropdown summary { padding: 15px; cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+    .donation-option { padding: 15px; border-top: 1px solid #222; }
+    .donation-option span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 5px; }
+    .donation-option strong { color: var(--success); font-family: monospace; font-size: 0.8rem; word-break: break-all; }
+
+    .bottom-gallery-wrapper {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .image-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      width: 100%;
+    }
+
+    .image-grid-3 img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #333;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+      transition: 0.3s;
+    }
+
+    .image-grid-3 img:hover { border-color: var(--accent); }
+
+    #extraGallery { display: none; margin-top: 15px; }
+
+    .show-more-btn {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid #333;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .show-more-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(255, 62, 62, 0.05);
+    }
+
+    footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="poster-grid">
+    <img src="tramadol.png" alt="Item 1">
+    <img src="valium.jpg" alt="Item 2">
+  </div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="header">
+      <div class="logo">Glow-Market</div>
+      <h1>Secure Checkout</h1>
+      <h1>Escrow Payment Protection</h1>
+    </div>
+
+    <div class="card" style="margin-bottom: 20px; padding: 15px;">
+      <input type="text" id="productSearch" placeholder="Search for meds (e.g. Xanax, Valium)..." onkeyup="filterProducts()" style="margin-top: 0;">
+    </div>
+
+    <div class="card">
+      <h2>Place Your Order</h2>
+      <p>Fill in the details below. Shipping is 100% discreet.</p>
+
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" value="1" min="1">
+      <p class="warning-text">⚠️ Minimum Order: €70</p>
+
+      <div class="plan-options" id="productGrid">
+        <div class="plan-card active product-item" onclick="selectPlan(this)">
+          <div class="plan-header">
+            <div class="plan-title">valium Diazepam  24 pack 5mg pills FENT FREE</div>
+            <div class="plan-price">$50</div>
+          </div>
+          <ul class="feature-list">
+            <li>Diazepam Teva 5mg</li>
+            <li>FREE TEST STRIPS</li>
+            <li>Standard Shipping 5-13 days</li>
+          </ul>
+        </div>
+
+        <div class="plan-card product-item" onclick="selectPlan(this)">
+          <div class="plan-header">
+            <div class="plan-title">Tramadol 24 PER BOX 50mg each capsule FENT FREE</div>
+            <div class="plan-price">$45</div>
+          </div>
+          <ul class="feature-list">
+            <li>Tramadol Sandoz 50mg</li>
+            <li>FREE TEST STRIPS</li>
+            <li>Fast Shipping 3-5 days</li>
+          </ul>
+        </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Mixed bills Counterfeit scan proof 50, 20, and 10, Euro bills</div>
+                  <div class="plan-price">$1200</div>
+                </div>
+                <ul class="feature-list">
+                  <li>scan proof</li>
+                  <li>3000 Euro worth of bills</li>
+                </ul>
+              </div>
+
+        <div style="grid-column: 1 / -1; margin-top: 10px;">
+          <details class="donation-dropdown" style="background: rgba(255,255,255,0.05); border: 1px dashed #444;">
+            <summary style="padding: 15px; cursor: pointer; color: #ff3e3e; font-weight: 900; text-align: center; list-style: none;">
+              + VIEW MORE PRODUCTS
+            </summary>
+            <div class="plan-options" style="padding: 20px;">
+              
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Xanax 14 PER BOX 2mg FENT FREE</div>
+                  <div class="plan-price">$35</div>
+                </div>
+                <ul class="feature-list">
+                  <li>Xanax Alprazolam 2mg</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Xanax 24 PER BOX 1mg FENT FREE</div>
+                  <div class="plan-price">$25</div>
+                </div>
+                <ul class="feature-list">
+                  <li>Xanax Alprazolam 1mg</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">MDMA powder per bag PER GRM each capsule FENT FREE</div>
+                  <div class="plan-price">$30</div>
+                </div>
+                <ul class="feature-list">
+                  <li>Pure MDMA Crystals</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Oxycodone blue 10 PER BOX 30mg each FENT FREE</div>
+                  <div class="plan-price">$165</div>
+                </div>
+                <ul class="feature-list">
+                  <li>Oxycodone HCI 30mg</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Oxycodone Green 10 PER BOX 15mg each FENT FREE</div>
+                  <div class="plan-price">$125</div>
+                </div>
+                <ul class="feature-list">
+                  <li>Oxycodone HCI 15mg</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Dutch Made XTC 20 PER BOX each capsule FENT FREE</div>
+                  <div class="plan-price">$120</div>
+                </div>
+                <ul class="feature-list">
+                  <li>xtc (sky press)</li>
+                  <li>FREE TEST STRIPS</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Pack of 20 bills Counterfeit scan proof 50 Euro bills</div>
+                  <div class="plan-price">$350</div>
+                </div>
+                <ul class="feature-list">
+                  <li>scan proof</li>
+                  <li>1000 Euro worth of bills</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Pack of 40 bills Counterfeit scan proof 20 Euro bills</div>
+                  <div class="plan-price">$270</div>
+                </div>
+                <ul class="feature-list">
+                  <li>scan proof</li>
+                  <li>800 Euro worth of bills</li>
+                </ul>
+              </div>
+
+              <div class="plan-card product-item" onclick="selectPlan(this)">
+                <div class="plan-header">
+                  <div class="plan-title">Pack of 50 bills Counterfeit scan proof 10 Euro bills</div>
+                  <div class="plan-price">$160</div>
+                </div>
+                <ul class="feature-list">
+                  <li>scan proof</li>
+                  <li>500 Euro worth of bills</li>
+                </ul>
+              </div>
+
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div id="cart-summary" style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid #333;">
+  <p style="color: var(--muted); font-size: 0.9rem;">Items Selected: <span id="total-items" style="color: #fff;">0</span></p>
+  <p style="font-size: 1.4rem; font-weight: 900; margin: 10px 0;">Total: <span id="total-price" style="color: var(--accent);">€0.00</span></p>
+  <p id="min-warning" style="color: #ff9800; font-size: 0.8rem; font-weight: 700;">⚠️ MINIMUM ORDER €70 REQUIRED</p>
+</div>
+
+<button class="btn" id="orderBtn" onclick="placeOrder()" disabled style="opacity: 0.5; cursor: not-allowed;">Place Order</button>
+
+      <label for="payment">Preferred Payment Method</label>
+      <select id="payment">
+        <option value="bitcoin">Bitcoin (BTC)</option>
+        <option value="monero">Monero (XMR)</option>
+        <option value="ethereum">Ethereum (ETH)</option>
+        <option value="solana">Solana (SOL)</option>
+        <option value="litecoin">Litecoin (LTC)</option>
+        <option value="Bitcoin Cash (BTC Cash)">Bitcoin Cash (BTC Cash)</option>
+        <option value="Nano">Nano</option>
+      </select>
+
+      <label for="shipping">Shipping Address</label>
+      <input type="text" id="shipping" placeholder="Street, City, Zip Code">
+
+      <label for="country">Country</label>
+      <select id="country">
+<option value="usa">USA</option>
+  <option value="canada">Canada</option>
+  <option value="uk">UK</option>
+  <option value="germany">Germany</option>
+  <option value="france">France</option>
+  <option value="netherlands">Netherlands</option>
+  <option value="italy">Italy</option>
+  <option value="spain">Spain</option>
+  <option value="australia">Australia</option>
+
+  <option value="afghanistan">Afghanistan</option>
+  <option value="albania">Albania</option>
+  <option value="algeria">Algeria</option>
+  <option value="andorra">Andorra</option>
+  <option value="angola">Angola</option>
+  <option value="antigua-and-barbuda">Antigua and Barbuda</option>
+  <option value="argentina">Argentina</option>
+  <option value="armenia">Armenia</option>
+  <option value="austria">Austria</option>
+  <option value="azerbaijan">Azerbaijan</option>
+  <option value="bahamas">Bahamas</option>
+  <option value="bahrain">Bahrain</option>
+  <option value="bangladesh">Bangladesh</option>
+  <option value="barbados">Barbados</option>
+  <option value="belarus">Belarus</option>
+  <option value="belgium">Belgium</option>
+  <option value="belize">Belize</option>
+  <option value="benin">Benin</option>
+  <option value="bhutan">Bhutan</option>
+  <option value="bolivia">Bolivia</option>
+  <option value="bosnia-and-herzegovina">Bosnia and Herzegovina</option>
+  <option value="botswana">Botswana</option>
+  <option value="brazil">Brazil</option>
+  <option value="brunei">Brunei</option>
+  <option value="bulgaria">Bulgaria</option>
+  <option value="burkina-faso">Burkina Faso</option>
+  <option value="burundi">Burundi</option>
+  <option value="cabo-verde">Cabo Verde</option>
+  <option value="cambodia">Cambodia</option>
+  <option value="cameroon">Cameroon</option>
+  <option value="central-african-republic">Central African Republic</option>
+  <option value="chad">Chad</option>
+  <option value="chile">Chile</option>
+  <option value="china">China</option>
+  <option value="colombia">Colombia</option>
+  <option value="comoros">Comoros</option>
+  <option value="congo-republic">Congo (Republic)</option>
+  <option value="congo-democratic-republic">Congo (Democratic Republic)</option>
+  <option value="costa-rica">Costa Rica</option>
+  <option value="croatia">Croatia</option>
+  <option value="cuba">Cuba</option>
+  <option value="cyprus">Cyprus</option>
+  <option value="czech-republic">Czech Republic</option>
+  <option value="denmark">Denmark</option>
+  <option value="djibouti">Djibouti</option>
+  <option value="dominica">Dominica</option>
+  <option value="dominican-republic">Dominican Republic</option>
+  <option value="ecuador">Ecuador</option>
+  <option value="egypt">Egypt</option>
+  <option value="el-salvador">El Salvador</option>
+  <option value="equatorial-guinea">Equatorial Guinea</option>
+  <option value="eritrea">Eritrea</option>
+  <option value="estonia">Estonia</option>
+  <option value="eswatini">Eswatini</option>
+  <option value="ethiopia">Ethiopia</option>
+  <option value="fiji">Fiji</option>
+  <option value="finland">Finland</option>
+  <option value="gabon">Gabon</option>
+  <option value="gambia">Gambia</option>
+  <option value="georgia">Georgia</option>
+  <option value="ghana">Ghana</option>
+  <option value="greece">Greece</option>
+  <option value="grenada">Grenada</option>
+  <option value="guatemala">Guatemala</option>
+  <option value="guinea">Guinea</option>
+  <option value="guinea-bissau">Guinea-Bissau</option>
+  <option value="guyana">Guyana</option>
+  <option value="haiti">Haiti</option>
+  <option value="honduras">Honduras</option>
+  <option value="hungary">Hungary</option>
+  <option value="iceland">Iceland</option>
+  <option value="india">India</option>
+  <option value="indonesia">Indonesia</option>
+  <option value="iran">Iran</option>
+  <option value="iraq">Iraq</option>
+  <option value="ireland">Ireland</option>
+  <option value="israel">Israel</option>
+  <option value="jamaica">Jamaica</option>
+  <option value="japan">Japan</option>
+  <option value="jordan">Jordan</option>
+  <option value="kazakhstan">Kazakhstan</option>
+  <option value="kenya">Kenya</option>
+  <option value="kiribati">Kiribati</option>
+  <option value="kuwait">Kuwait</option>
+  <option value="kyrgyzstan">Kyrgyzstan</option>
+  <option value="laos">Laos</option>
+  <option value="latvia">Latvia</option>
+  <option value="lebanon">Lebanon</option>
+  <option value="lesotho">Lesotho</option>
+  <option value="liberia">Liberia</option>
+  <option value="libya">Libya</option>
+  <option value="liechtenstein">Liechtenstein</option>
+  <option value="lithuania">Lithuania</option>
+  <option value="luxembourg">Luxembourg</option>
+  <option value="madagascar">Madagascar</option>
+  <option value="malawi">Malawi</option>
+  <option value="malaysia">Malaysia</option>
+  <option value="maldives">Maldives</option>
+  <option value="mali">Mali</option>
+  <option value="malta">Malta</option>
+  <option value="marshall-islands">Marshall Islands</option>
+  <option value="mauritania">Mauritania</option>
+  <option value="mauritius">Mauritius</option>
+  <option value="mexico">Mexico</option>
+  <option value="micronesia">Micronesia</option>
+  <option value="moldova">Moldova</option>
+  <option value="monaco">Monaco</option>
+  <option value="mongolia">Mongolia</option>
+  <option value="montenegro">Montenegro</option>
+  <option value="morocco">Morocco</option>
+  <option value="mozambique">Mozambique</option>
+  <option value="myanmar">Myanmar</option>
+  <option value="namibia">Namibia</option>
+  <option value="nauru">Nauru</option>
+  <option value="nepal">Nepal</option>
+  <option value="new-zealand">New Zealand</option>
+  <option value="nicaragua">Nicaragua</option>
+  <option value="niger">Niger</option>
+  <option value="nigeria">Nigeria</option>
+  <option value="north-macedonia">North Macedonia</option>
+  <option value="norway">Norway</option>
+  <option value="oman">Oman</option>
+  <option value="pakistan">Pakistan</option>
+  <option value="palau">Palau</option>
+  <option value="panama">Panama</option>
+  <option value="papua-new-guinea">Papua New Guinea</option>
+  <option value="paraguay">Paraguay</option>
+  <option value="peru">Peru</option>
+  <option value="philippines">Philippines</option>
+  <option value="poland">Poland</option>
+  <option value="portugal">Portugal</option>
+  <option value="qatar">Qatar</option>
+  <option value="romania">Romania</option>
+  <option value="russia">Russia</option>
+  <option value="rwanda">Rwanda</option>
+  <option value="saint-kitts-and-nevis">Saint Kitts and Nevis</option>
+  <option value="saint-lucia">Saint Lucia</option>
+  <option value="saint-vincent-and-the-grenadines">Saint Vincent and the Grenadines</option>
+  <option value="samoa">Samoa</option>
+  <option value="san-marino">San Marino</option>
+  <option value="sao-tome-and-principe">Sao Tome and Principe</option>
+  <option value="saudi-arabia">Saudi Arabia</option>
+  <option value="senegal">Senegal</option>
+  <option value="serbia">Serbia</option>
+  <option value="seychelles">Seychelles</option>
+  <option value="sierra-leone">Sierra Leone</option>
+  <option value="singapore">Singapore</option>
+  <option value="slovakia">Slovakia</option>
+  <option value="slovenia">Slovenia</option>
+  <option value="solomon-islands">Solomon Islands</option>
+  <option value="somalia">Somalia</option>
+  <option value="south-africa">South Africa</option>
+  <option value="south-korea">South Korea</option>
+  <option value="south-sudan">South Sudan</option>
+  <option value="sri-lanka">Sri Lanka</option>
+  <option value="sudan">Sudan</option>
+  <option value="suriname">Suriname</option>
+  <option value="sweden">Sweden</option>
+  <option value="switzerland">Switzerland</option>
+  <option value="syria">Syria</option>
+  <option value="tajikistan">Tajikistan</option>
+  <option value="tanzania">Tanzania</option>
+  <option value="thailand">Thailand</option>
+  <option value="timor-leste">Timor-Leste</option>
+  <option value="togo">Togo</option>
+  <option value="tonga">Tonga</option>
+  <option value="trinidad-and-tobago">Trinidad and Tobago</option>
+  <option value="tunisia">Tunisia</option>
+  <option value="turkey">Turkey</option>
+  <option value="turkmenistan">Turkmenistan</option>
+  <option value="tuvalu">Tuvalu</option>
+  <option value="uganda">Uganda</option>
+  <option value="ukraine">Ukraine</option>
+  <option value="united-arab-emirates">United Arab Emirates</option>
+  <option value="uruguay">Uruguay</option>
+  <option value="uzbekistan">Uzbekistan</option>
+  <option value="vanuatu">Vanuatu</option>
+  <option value="vatican-city">Vatican City</option>
+  <option value="venezuela">Venezuela</option>
+  <option value="vietnam">Vietnam</option>
+  <option value="yemen">Yemen</option>
+  <option value="zambia">Zambia</option>
+  <option value="zimbabwe">Zimbabwe</option>
+      </select>
+
+
+       <div style="margin-top: 25px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 12px; border: 1px solid #333;">
+        <p style="margin-bottom: 15px;">
+          <span style="color:#ffd700; font-size: 0.8rem; text-transform: uppercase;">Bitcoin Wallet:</span><br>
+          <strong style="color: var(--success); font-family: monospace; font-size: 0.85rem; word-break: break-all;">bc1qzqfhd9tcm9ej26ah8tr8dtufse8hv6qnnfxejz</strong>
+        </p>
+
+        <p>
+          <span style="color:#ffd700; font-size: 0.8rem; text-transform: uppercase;">Monero XMR Wallet:</span><br>
+          <strong style="color: var(--success); font-family: monospace; font-size: 0.85rem; word-break: break-all;">87LAsj4eo9C4ivVmGJaqxCZnnXhdm3UhLDU8zXHDA8L2YihKsPkEWB74nWSFuKqWDFbsCVpEChuPyWygH2HqoUivJPR6wq8</strong>
+        </p>
+
+        <details class="donation-dropdown">
+          <summary>View other accepted coins</summary>
+          <div class="donation-option">
+            <span>Ethereum (ETH):</span>
+            <strong>0xb7a8C2deecAE937a1c671F7b2FD4c7ae024aE77e</strong>
+          </div>
+          <div class="donation-option">
+            <span>Litecoin (LTC):</span>
+            <strong>ltc1q7ptrmg0n9y3af5dyxawwe8ugjl4l990f5rnn78</strong>
+          </div>
+          <div class="donation-option">
+            <span>nano:</span>
+            <strong>nano_1dq3eh46jertoza3coujpr1h3dhhrwyofc3dk9y8ho5gf1yph74jhxi5b87i</strong>
+          </div>
+          <div class="donation-option">
+            <span>Solana (SOL):</span>
+            <strong>BKBiRQNpYohE1AQkD4KHt5KHQEFVqttdoJR8F4zzz4AC</strong>
+          </div>
+        </details>
+      </div>
+
+      <div class="bottom-gallery-wrapper">
+        <div class="image-grid-3">
+          <img src="tramadol.png" alt="Tramadol">
+          <img src="Oxycodone.jpg" alt="Valium">
+          <img src="xanax.jpg" alt="Xanax Batch">
+        </div>
+
+        <div id="extraGallery" class="image-grid-3">
+          <img src="valium.jpg" alt="Oxy">
+          <img src="mdma.jpg" alt="Mdma">
+          <img src="xan2m.jpg" alt="xanax">
+          <img src="50f.jpg" alt="50 bill front">
+          <img src="50b.jpg" alt="50 bill Back">
+          <img src="20f.jpg" alt="20 bill front">
+          <img src="20b.jpg" alt="20 bill Back">
+          <img src="10f.jpg" alt="10 bill front">
+          <img src="10b.jpg" alt="10 bill Back">
+          <img src="pack.png" alt="counterfeit pack">
+        </div>
+
+        <button id="showBtn" class="show-more-btn" onclick="showMoreImages()">Show More Images</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 GlowLinks | TGN | The Glow-Network Contact: <a href="mailto:NOVOHC-499@proton.me" style="color: var(--accent);">NOVOHC-499@proton.me</a>
+  </footer>
+
+<script>
+    let cart = {}; // Stores product title as key, and {price, qty} as value
+    const MIN_ORDER = 70;
+
+    function showMoreImages() {
+      document.getElementById('extraGallery').style.display = 'grid';
+      document.getElementById('showBtn').style.display = 'none';
+    }
+
+    function filterProducts() {
+      const input = document.getElementById('productSearch').value.toLowerCase();
+      const products = document.querySelectorAll('.product-item');
+      products.forEach(product => {
+        const title = product.querySelector('.plan-title').innerText.toLowerCase();
+        product.style.display = title.includes(input) ? "flex" : "none";
+      });
+    }
+
+    function selectPlan(element) {
+      const title = element.querySelector('.plan-title').innerText;
+      const priceText = element.querySelector('.plan-price').innerText;
+      const price = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+      if (cart[title]) {
+        cart[title].qty += 1;
+      } else {
+        cart[title] = { price: price, qty: 1 };
+      }
+      
+      
+      element.style.borderColor = "var(--success)";
+      setTimeout(() => { element.style.borderColor = ""; }, 300);
+
+      updateTotal();
+    }
+
+    function removeFromCart(title) {
+      if (cart[title]) {
+        cart[title].qty -= 1;
+        if (cart[title].qty <= 0) delete cart[title];
+      }
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const cartSummary = document.getElementById('cart-summary');
+      const orderBtn = document.getElementById('orderBtn');
+      const minWarning = document.getElementById('min-warning');
+      
+      let subtotal = 0;
+      let totalItems = 0;
+      let cartHtml = '<strong>Items in Cart:</strong><br>';
+
+      for (let title in cart) {
+        let itemTotal = cart[title].price * cart[title].qty;
+        subtotal += itemTotal;
+        totalItems += cart[title].qty;
+        cartHtml += `
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-top:5px;">
+            <span>${cart[title].qty}x ${title}</span>
+            <span style="color:var(--accent); cursor:pointer;" onclick="event.stopPropagation(); removeFromCart('${title}')">[Remove]</span>
+          </div>`;
+      }
+
+      if (totalItems === 0) cartHtml = '<em>Your cart is empty. Click products to add.</em>';
+
+      // Update UI
+      document.getElementById('total-items').innerText = totalItems;
+      document.getElementById('total-price').innerText = `€${subtotal.toFixed(2)}`;
+      
+      // We keep the innerHTML update separate so it doesn't break the spans
+      const cartList = document.getElementById('cart-list') || createCartList();
+      cartList.innerHTML = cartHtml;
+
+      if (subtotal >= MIN_ORDER && totalItems > 0) {
+        orderBtn.disabled = false;
+        orderBtn.style.opacity = "1";
+        orderBtn.style.cursor = "pointer";
+        minWarning.style.display = "none";
+      } else {
+        orderBtn.disabled = true;
+        orderBtn.style.opacity = "0.5";
+        minWarning.style.display = "block";
+      }
+    }
+
+    function createCartList() {
+      const div = document.createElement('div');
+      div.id = 'cart-list';
+      div.style.marginBottom = "10px";
+      div.style.borderBottom = "1px solid #333";
+      div.style.paddingBottom = "10px";
+      const summary = document.getElementById('cart-summary');
+      summary.prepend(div);
+      return div;
+    }
+
+    function placeOrder() {
+      const shipping = document.getElementById('shipping').value;
+      if (!shipping) { alert("Enter an address, ."); return; }
+      
+      let summary = "Order Details:\n";
+      for (let title in cart) {
+        summary += `- ${cart[title].qty}x ${title}\n`;
+      }
+      summary += `\nTotal: ${document.getElementById('total-price').innerText}`;
+      
+      alert(`✅ Order Sent! Email NOVOHC-499@proton.me for tracking\n\n${summary}\n\nShipping to: ${shipping}`);
+    }
+
+</script>
+</body>
+</html>
+
+
+
+

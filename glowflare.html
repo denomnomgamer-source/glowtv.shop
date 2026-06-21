@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glowflare provides a bulletproof, private CDN and zero-trust infrastructure for The Glow Network, operating over 500 privately owned datacenters worldwide.">
+    <meta name="keywords" content="Private CDN, Bulletproof Hosting, Offshore Datacenters, Zero Trust Network, The Glow Network, DDoS Protection, Secure Infrastructure, Glowlinks">
+    <meta name="author" content="The Glow Network">
+    <meta property="og:title" content="Glowflare | Private CDN for The Glow Network">
+    <meta property="og:description" content="High-performance, bulletproof delivery and zero-trust reliability tailored strictly for The Glow Network's internal infrastructure.">
+    <meta property="og:type" content="website">
+    <title>Glowflare | Private CDN for The Glow Network</title>
+    <link rel="canonical" href="https://glowlinks.net/glowflare" />
+
+<link rel="alternate" href="https://glowlinks.net/glowflare" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/glowflare" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/glowflare" hreflang="en-US" />
+
+<link rel="icon" type="image/png" href="the-glow-network.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowflare: {
+                            DEFAULT: '#F38020', // Cloudflare-esque Orange
+                            dark: '#D97018',
+                            light: '#F59A4D'
+                        },
+                        darkbg: '#0F172A', // Deep slate for technical feel
+                        surface: '#1E293B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+ 
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0F172A; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(243, 128, 32, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='glowflare.html'">
+                    <svg class="h-8 w-8 text-glowflare mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    <span class="font-extrabold text-2xl tracking-tight text-gray-900">Glow<span class="text-glowflare">flare</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="infrastructure.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Infrastructure</a>
+                    <a href="nodes.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Nodes</a>
+                    <a href="tor.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Tor/Darkweb</a>
+                    <a href="docs.html" class="text-gray-600 hover:text-glowflare font-medium transition-colors">Internal Docs</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="infrastructure.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-glowflare hover:bg-gray-50">Infrastructure</a>
+                <a href="nodes.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-glowflare hover:bg-gray-50">Nodes</a>
+                <a href="Tor.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-glowflare hover:bg-gray-50">Tor/Darkweb</a>
+                <a href="docs.html" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-glowflare hover:bg-gray-50">Internal Docs</a>
+            </div>
+        </div>
+    </nav>
+
+ 
+    <header class="relative bg-darkbg text-white pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Interactive Canvas Background -->
+        <canvas id="network-canvas" class="absolute inset-0 z-0 opacity-50"></canvas>
+        
+
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-darkbg z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center px-3 py-1 rounded-full border border-gray-600 bg-gray-800/50 text-sm font-medium text-gray-300 mb-8 backdrop-blur-sm">
+                <span class="flex h-2 w-2 rounded-full bg-glowflare mr-2 animate-pulse"></span>
+                Exclusive Private CDN for The Glow Network & Partners
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                A Private Internet is <br class="hidden md:block"/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-glowflare to-yellow-400">Glowing</span>.
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                High-performance delivery, bulletproof security, and zero-trust reliability tailored strictly for The Glow Network & Partners. Backed by completely privately owned offshore datacenters.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="window.location.href='request_glowflare.html'" class="bg-glowflare hover:bg-glowflare-dark text-white font-bold py-4 px-8 rounded-lg shadow-lg transition-all transform hover:-translate-y-0.5">
+                    Request Internal Access
+                </button>
+                <button onclick="window.location.href='nodes.html'" class="bg-surface border border-gray-600 hover:border-gray-400 text-white font-bold py-4 px-8 rounded-lg transition-all flex items-center justify-center group">
+                    <span class="text-green-400 mr-2 group-hover:animate-pulse">●</span> View Network Status
+                </button>
+            </div>
+            
+            <p class="mt-6 text-sm text-gray-500">Authorized Partners & The Glow-Network personnel only. Restricted access.</p>
+        </div>
+    </header>
+
+    <section class="bg-white border-b border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-4xl font-extrabold text-gray-900 mb-1">500<span class="text-glowflare">+</span></p>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Private Nodes</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-gray-900 mb-1">248<span class="text-glowflare">Tbps</span></p>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Internal Capacity</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-gray-900 mb-1">0<span class="text-glowflare">ms</span></p>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Public Exposure</p>
+                </div>
+                <div>
+                    <p class="text-4xl font-extrabold text-gray-900 mb-1">99.9<span class="text-glowflare">%</span></p>
+                    <p class="text-sm font-medium text-gray-500 uppercase tracking-wide">Uptime SLA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything our network needs, everywhere it needs it</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Glowflare integrates seamlessly with The Glow Network's proprietary systems to provide closed-loop security and lightning-fast routing.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-orange-100 text-glowflare rounded-lg flex items-center justify-center mb-6 group-hover:bg-glowflare group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Internal WAF</h3>
+                    <p class="text-gray-600 mb-4">Protect our internal applications from lateral movement and advanced persistent threats automatically.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Private CDN</h3>
+                    <p class="text-gray-600 mb-4">Deliver large assets across our dark fiber network in milliseconds. Drastically reduces intra-zone costs.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Zero Trust Mesh</h3>
+                    <p class="text-gray-600 mb-4">Securely connect our teams and microservices without exposing any endpoints to the public internet.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Bulletproof Datacenters</h3>
+                    <p class="text-gray-600 mb-4">100% privately owned, bulletproof hardware physically secured in strategic, privacy-respecting jurisdictions including Russia, Switzerland, and Moldova.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Edge Compute</h3>
+                    <p class="text-gray-600 mb-4">Run proprietary data transformation functions right at the edge of our internal network.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group glow-effect">
+                    <div class="h-12 w-12 bg-teal-100 text-teal-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Intranet DNS & TOR</h3>
+                    <p class="text-gray-600 mb-4">Air-gapped, ultra-resilient DNS infrastructure specifically built for resolving secure domains. And the Perfect CDN for Tor .onion Hidden Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-darkbg text-white overflow-hidden relative">
+        <!-- Abstract shape -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-glowflare rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Centralized Command.</h2>
+                    <p class="text-lg text-gray-400 mb-8">Monitor the entire private fleet, push firewall configurations, and review analytics securely from the Glowflare Command Center.</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="h-6 w-6 text-glowflare mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Real-time internal traffic telemetry
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="h-6 w-6 text-glowflare mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Automated certificate rotations
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="h-6 w-6 text-glowflare mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Private namespace management
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="h-6 w-6 text-glowflare mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            Tor .onion Specialized
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="lg:w-1/2">
+
+                    <div class="rounded-xl bg-surface border border-gray-700 shadow-2xl overflow-hidden transform transition hover:scale-105 duration-500">
+                        <!-- Mac Window Header -->
+                        <div class="bg-gray-800 px-4 py-3 flex items-center border-b border-gray-700 gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="ml-4 text-xs text-gray-400 font-mono">dash.internal.glow</div>
+                        </div>
+                        <!-- Content -->
+                        <div class="p-6">
+                            <div class="flex justify-between items-end mb-6">
+                                <div>
+                                    <h4 class="text-gray-400 text-sm font-medium mb-1">Intranet Traffic (Past 24h)</h4>
+                                    <div class="text-3xl font-bold text-white"><span id="traffic-stat">45.8</span>T <span id="traffic-pct" class="text-sm text-green-400 font-normal transition-all">↑ 1.2%</span></div>
+                                </div>
+                                <div class="bg-gray-800 px-3 py-1 rounded text-xs text-gray-400 border border-gray-700">Live Updates</div>
+                            </div>
+
+                            <div class="h-32 flex items-end gap-2 mb-6">
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 40%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 60%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 35%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 80%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 50%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 90%"></div></div>
+                                <div class="w-full bg-glowflare/20 rounded-t relative group"><div class="chart-bar absolute bottom-0 w-full bg-glowflare rounded-t transition-all duration-1000 ease-in-out" style="height: 70%"></div></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <div class="text-gray-400 text-xs mb-1">Rogue Pings Blocked</div>
+                                    <div id="pings-stat" class="text-xl font-bold text-red-400 transition-all">12,042</div>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded border border-gray-700">
+                                    <div class="text-gray-400 text-xs mb-1">Edge Cache Hit Ratio</div>
+                                    <div id="cache-stat" class="text-xl font-bold text-green-400 transition-all">98.4%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-darkbg text-gray-400 border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col items-center text-center mb-12">
+                <div class="flex items-center mb-4">
+                    <svg class="h-8 w-8 text-glowflare mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    <span class="font-bold text-2xl text-white">Glow<span class="text-glowflare">flare</span></span>
+                </div>
+                <p class="text-sm max-w-md">Powering the backbone of The Glow Network.</p>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2026 The Glow Network.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <span class="text-gray-500 tracking-wider uppercase text-xs font-semibold">Tor & Clearnet</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        const connectionDistance = 150;
+        const particleCount = 70;
+
+        // Colors based on Glowflare theme
+        const colorPrimary = '#F38020'; // Orange
+        const colorSecondary = '#3B82F6'; // Blue accent
+        
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 150
+        };
+
+        window.addEventListener('mousemove', function(event) {
+            // Adjust mouse coordinates based on canvas position
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = event.x - rect.left;
+            mouse.y = event.y - rect.top;
+        });
+
+        window.addEventListener('mouseout', function() {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+
+        function resize() {
+            width = canvas.parentElement.offsetWidth;
+            height = canvas.parentElement.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+            init();
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                // Randomly assign orange or blue to dots
+                this.color = Math.random() > 0.8 ? colorSecondary : colorPrimary;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // Bounce off edges
+                if (this.x > width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > height || this.y < 0) this.speedY = -this.speedY;
+
+                // Mouse interaction - slight repulsion
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const maxDistance = mouse.radius;
+                        const force = (maxDistance - distance) / maxDistance;
+                        const directionX = forceDirectionX * force * 2;
+                        const directionY = forceDirectionY * force * 2;
+                        
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw connections
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        const opacity = 1 - (distance / connectionDistance);
+                        ctx.strokeStyle = `rgba(243, 128, 32, ${opacity * 0.5})`; // Orange lines
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        
+        // Start animation
+        resize();
+        animate();
+
+        setInterval(() => {
+            // Update Chart Bars with smooth random heights
+            document.querySelectorAll('.chart-bar').forEach(bar => {
+                const newHeight = Math.floor(Math.random() * 65) + 35; // Random between 35% and 100%
+                bar.style.height = `${newHeight}%`;
+            });
+
+            const pingsEl = document.getElementById('pings-stat');
+            if (pingsEl) {
+                let currentPings = parseInt(pingsEl.innerText.replace(/,/g, ''));
+                currentPings += Math.floor(Math.random() * 8); // Add 0-7 blocked pings
+                pingsEl.innerText = currentPings.toLocaleString();
+            }
+
+            const trafficEl = document.getElementById('traffic-stat');
+            const trafficPctEl = document.getElementById('traffic-pct');
+            if (trafficEl && trafficPctEl) {
+                let currentTraffic = parseFloat(trafficEl.innerText);
+                let fluctuation = (Math.random() * 0.4 - 0.15); // Slight upward bias
+                let newTraffic = (currentTraffic + fluctuation).toFixed(1);
+                
+                // Keep it within a realistic bound
+                if (newTraffic > 50) newTraffic = 45.8; 
+                
+                trafficEl.innerText = newTraffic;
+                
+                let pct = (Math.random() * 1.5 + 0.5).toFixed(1);
+                trafficPctEl.innerText = `↑ ${pct}%`;
+            }
+
+            const cacheEl = document.getElementById('cache-stat');
+            if (cacheEl) {
+                let newCache = (98.0 + Math.random() * 1.8).toFixed(1); // 98.0% to 99.8%
+                cacheEl.innerText = `${newCache}%`;
+            }
+
+        }, 2500); // Update every 2.5 seconds
+
+
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+document.addEventListener("keydown", e => {
+    if (e.key === "F12") e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key)) e.preventDefault();
+    if (e.ctrlKey && ["U","S","H"].includes(e.key)) e.preventDefault();
+});
+
+document.addEventListener("dragstart", e => e.preventDefault());
+
+let devtoolsOpen = false;
+
+function detectDevTools() {
+    const threshold = 160;
+
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+    const start = performance.now();
+    debugger;
+    const end = performance.now();
+    const debugTime = end - start > 5;
+
+    if ((widthDiff || heightDiff || debugTime) && !devtoolsOpen) {
+        devtoolsOpen = true;
+
+        document.body.innerHTML = `
+            <div style="
+                font-family: system-ui;
+                color: #ff3b6b;
+                text-align: center;
+                padding-top: 20vh;
+                font-size: 24px;
+            ">
+                🔒 Glowflare Protection Enabled<br><br>
+                Inspecting is disabled.
+            </div>`;
+    }
+}
+
+setInterval(detectDevTools, 500);
+    </script>
+</body>
+</html>
