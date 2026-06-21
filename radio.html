@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Onion-Location" content="http://glowwavehcdcuh2bn6mzfhexe4wy3dikwur5zjvuywczowqmq7evf5ad.onion/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glowwave-FM | GlowTV Shop | Premium High-Fidelity</title>
+<meta name="description" content="Tune into Glowwave-FM on GlowTV Shop. Enjoy our 24/7 premium internet radio streaming lossless, audiophile-grade music over secure encrypted infrastructure.">
+<meta name="keywords" content="GlowTV Shop, Glowwave-FM, Premium Audio Stream, Lossless Radio, Secure Music Streaming, Glow-Network, Audiophile">
+
+<meta property="og:title" content="Glowwave-FM | GlowTV Shop Premium Radio">
+<meta property="og:description" content="Official secure streaming radio for GlowTV Shop. Premium high-fidelity audio 24/7.">
+<meta property="og:url" content="https://glowtv.shop/radio">
+<meta property="og:image" content="https://glowtv.shop/the-glow-network.png">
+<meta property="og:type" content="music.radio_station">
+
+<link rel="canonical" href="https://glowtv.shop/radio" />
+<link rel="alternate" href="https://glowlinks.net/radio" hreflang="x-default" />
+<link rel="alternate" href="https://glowtv.org/radio" hreflang="en" />
+<link rel="alternate" href="https://glowtv.shop/radio" hreflang="en-US" />
+<link rel="icon" type="image/png" href="the-glow-network.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --glow-accent: #f43f5e; 
+  --glow-accent-soft: #fb7185;
+  --bg-dark: #060509;
+  --bg-card: #12131b;
+  --bg-card-alt: #161824;
+  --border-soft: #2b2e40;
+  --hero-purple: #292642;
+  --text-main: #fafafa;
+  --text-soft: rgba(250,250,250,0.75);
+  --gold-premium: #eab308;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-top: 5rem;
+}
+
+.domain-picker {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+.domain-picker select {
+  background: rgba(10, 10, 20, 0.85);
+  color: var(--glow-accent);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.1);
+}
+
+.domain-picker select:hover, .domain-picker select:focus {
+  border-color: var(--glow-accent);
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.3);
+}
+
+.domain-picker select option {
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, var(--hero-purple), var(--bg-dark) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: intro-fade 2.8s forwards;
+}
+
+.intro-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.85);
+  animation: intro-zoom 1.8s forwards;
+  text-shadow: 0 0 25px rgba(244, 63, 94, 0.8);
+}
+
+@keyframes intro-zoom {
+  0% { opacity: 0; transform: scale(0.85); }
+  40% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes intro-fade {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+.rating {
+  position: absolute;
+  top: 4.5rem;
+  left: 20px;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: rgba(10, 10, 20, 0.9);
+  border: 1px solid var(--glow-accent);
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.4);
+  z-index: 10;
+}
+
+.hero {
+  text-align: center;
+  padding: 20px;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+}
+
+h1 {
+  font-size: clamp(3rem, 10vw, 5rem);
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -2px;
+  line-height: 0.9;
+  background: linear-gradient(to bottom, #ffffff 5%, #b8b8c8 50%, #4f4f65 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.1s ease-out;
+}
+
+.meta-data {
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+.meta-data .match {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(0, 200, 120, 0.15);
+  color: #4ade80;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-right: 10px;
+}
+
+.radio-deck {
+  background: radial-gradient(circle at top, var(--hero-purple), var(--bg-dark) 65%);
+  border-radius: 22px;
+  margin: 30px auto 40px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+  max-width: 650px;
+  width: 90%;
+  position: relative;
+  padding: 30px 22px 26px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.loading-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.loading-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--glow-accent), var(--glow-accent-soft));
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.6);
+  animation: loading-sweep 2.2s infinite ease-in-out;
+}
+
+@keyframes loading-sweep {
+  0% { width: 0%; transform: translateX(-100%); }
+  50% { width: 80%; transform: translateX(20%); }
+  100% { width: 0%; transform: translateX(200%); }
+}
+
+.visualizer-container {
+  width: 100%;
+  height: 125px;
+  background: radial-gradient(circle at top, rgba(41, 38, 66, 0.5), #060509 60%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 12px;
+  gap: 3px;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(to top, var(--glow-accent), var(--gold-premium));
+  min-height: 2px;
+  transition: height 0.05s ease;
+  border-radius: 2px 2px 0 0;
+}
+
+.vu-meter {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: var(--glow-accent-soft);
+  text-align: right;
+  line-height: 1.3;
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: rgba(10, 10, 18, 0.8);
+  margin-bottom: 20px;
+}
+
+.ticker-inner {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  animation: ticker-scroll 200s linear infinite;
+}
+
+.ticker-item {
+  margin-right: 35px;
+}
+
+.ticker-source {
+  color: var(--glow-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 8px;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+#glow-player-wrap {
+  background: rgba(6, 5, 14, 0.8);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-bottom: 20px;
+}
+
+audio {
+  width: 100%;
+  height: 40px;
+  filter: invert(100%) hue-rotate(180deg) contrast(1.1);
+}
+
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.btn-pgp {
+  background: linear-gradient(135deg, var(--glow-accent), var(--glow-accent-soft));
+  color: #fff;
+  padding: 14px 25px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease-out;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.3);
+  flex: 1;
+}
+
+.btn-pgp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(244, 63, 94, 0.6);
+}
+
+.btn-server {
+  background: linear-gradient(135deg, #4f4f65, #292642);
+  padding: 0 20px;
+  flex: 0 0 auto;
+  box-shadow: none;
+}
+
+.btn-server:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.copy-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  gap: 12px;
+}
+
+.copy-text {
+  color: var(--glow-accent);
+  font-weight: 600;
+  word-break: break-all;
+  font-size: 0.7rem;
+  text-align: left;
+}
+
+.btn-copy {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--glow-accent);
+  border: 1px solid var(--glow-accent);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.btn-copy:hover {
+  background: var(--glow-accent);
+  color: #fff;
+}
+
+.notice {
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background: rgba(10,10,18,0.4);
+  padding: 16px;
+  border-radius: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 35px 24px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.8;
+  color: #f5f5f5;
+  border-top: 1px solid var(--border-soft);
+  background: linear-gradient(to top, #060509 80%, transparent);
+  width: 100%;
+}
+ 
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0b0d14; }
+::-webkit-scrollbar-thumb { background: var(--border-soft); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--glow-accent); }
+* { scrollbar-width: thin; scrollbar-color: var(--border-soft) #0b0d14; }
+
+</style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="domain-picker">
+  <select aria-label="Select Glow Network Domain" onchange="if(this.value) window.location.href=this.value;">
+    <option value="" disabled>📡 Select Network</option>
+    <option value="https://glowtv.shop/radio" selected>GlowTV.shop (Current)</option>
+    <option value="https://glowlinks.net/radio">Glowlinks.net</option>
+    <option value="https://glowtv.org/radio">GlowTV.org</option>
+  </select>
+</div>
+
+<div class="intro-screen">
+  <div class="intro-title">GlowTV Network</div>
+</div>
+
+<div class="rating">~TGN Glowwave-FM</div>
+
+<main>
+  <div class="hero">
+    <h1 id="title">Glowwave-FM</h1>
+    <div class="meta-data">
+      <span class="match">LIVE NOW</span> Premium Audiophile Stream | <strong>Encrypted Proxy</strong>
+    </div>
+  </div>
+
+  <section class="radio-deck">
+
+    <div id="loading-bar" class="loading-bar">
+      <div class="loading-bar-fill"></div>
+    </div>
+
+    <div class="visualizer-container" id="visualizer" style="opacity:0; transition:0.6s;">
+      <div class="vu-meter">
+        PEAK: -0.1dB<br>
+        LUFS: -1.0<br>
+        <span id="gain-label" style="color:#ffffff">GAIN: 0%</span>
+      </div>
+    </div>
+
+    <div class="ticker-wrap" id="ticker-wrap" style="opacity:0; transition:0.6s;">
+      <div class="ticker-inner" id="ticker">Fetching secure data feeds...</div>
+    </div>
+
+    <div id="glow-player-wrap" style="opacity:0; transition:0.6s;">
+      <audio id="glow-audio" crossorigin="anonymous" src="https://wavehub.uk/api/functions/stationStream?uuid=1cf33481-5bc1-4e66-a95f-9d5278542df1"></audio>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 8px; width: 100%;">
+        <button id="play-btn" class="btn-pgp" style="flex: 1;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          START PREMIUM STREAM
+        </button>
+        <button id="switch-server-btn" class="btn-pgp btn-server" title="Cycle Relay Server">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+        </button>
+      </div>
+      
+      <div id="server-indicator" style="font-size: 11px; color: #72768f; margin-top: 6px; font-weight: 500;">Relay Server: WVHB (Primary)</div>
+    </div>
+
+    <div class="notice">
+      📡 <b>WEBMASTER EMBED:</b> Integrate the GlowTV radio player onto your own platform using our direct proxy link.
+      <div class="copy-box">
+        <span class="copy-text">https://wavehub.uk/api/functions/stationStream?uuid=1cf33481-5bc1-4e66-a95f-9d5278542df1</span>
+        <button class="btn-copy" id="copy-btn" onclick="copyEmbedUrl()">Copy URL</button>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="index.html" class="btn-pgp">Return to GlowTV Shop</a>
+      <a href="about_glowwave.html" class="btn-pgp">Station Info</a>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div style="margin-bottom: 8px; font-weight: 800; letter-spacing: 0.08em; color:var(--glow-accent);">
+   © GLOWTV NETWORK 2012 - 2026
+  </div>
+  <div style="margin-bottom: 10px; font-weight: 400;">
+    This infrastructure guarantees zero user-data retention.
+  </div>
+</footer>
+
+<script>
+const title = document.getElementById('title');
+const audio = document.getElementById('glow-audio');
+const playBtn = document.getElementById('play-btn');
+const visualizer = document.getElementById('visualizer');
+const gainLabel = document.getElementById('gain-label');
+const switchBtn = document.getElementById('switch-server-btn');
+const serverIndicator = document.getElementById('server-indicator');
+
+const servers = [
+  { name: "WVHB (Primary)", url: "https://wavehub.uk/api/functions/stationStream?uuid=1cf33481-5bc1-4e66-a95f-9d5278542df1" },
+  { name: "Woodpecker (Fallback)", url: "https://cdn.woodpecker-becrux.ts.net/stream" }
+];
+let currentServerIndex = 0;
+
+audio.addEventListener('error', () => {
+  if (currentServerIndex === 0) {
+    setServer(1);
+  }
+});
+
+function setServer(index) {
+  const wasPlaying = !audio.paused;
+  currentServerIndex = index;
+  audio.src = servers[currentServerIndex].url;
+  serverIndicator.innerText = `Relay Server: ${servers[currentServerIndex].name}`;
+  if (wasPlaying) {
+    audio.play().catch(e => console.error(e));
+  }
+}
+
+switchBtn.addEventListener('click', () => {
+  const nextIndex = (currentServerIndex + 1) % servers.length;
+  setServer(nextIndex);
+});
+
+const barCount = 40;
+for (let i = 0; i < barCount; i++) {
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  visualizer.appendChild(bar);
+}
+const bars = document.querySelectorAll('.bar');
+
+let audioCtx, analyzer, source, dataArray;
+
+function initAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyzer = audioCtx.createAnalyser();
+  source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyzer);
+  analyzer.connect(audioCtx.destination);
+  analyzer.fftSize = 128;
+  dataArray = new Uint8Array(analyzer.frequencyBinCount);
+  animate();
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (!analyzer) return;
+  analyzer.getByteFrequencyData(dataArray);
+  let sum = 0;
+  for (let i = 0; i < barCount; i++) {
+    const val = dataArray[i] || 0;
+    const height = (val / 255) * 100;
+    bars[i].style.height = height + '%';
+    bars[i].style.opacity = (val / 255) + 0.25;
+    sum += val;
+  }
+  gainLabel.innerText = `GAIN: ${Math.round((sum / (barCount * 255)) * 100)}%`;
+}
+
+playBtn.addEventListener('click', () => {
+  initAudio();
+  if (audio.paused) {
+    audio.play();
+    playBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg> SUSPEND STREAM';
+  } else {
+    audio.pause();
+    playBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> START PREMIUM STREAM';
+  }
+});
+
+document.addEventListener('mousemove', (e) => {
+  const x = (window.innerWidth / 2 - e.pageX) / 45;
+  const y = (window.innerHeight / 2 - e.pageY) / 45;
+  title.style.transform = `translateX(${x}px) translateY(${y}px)`;
+});
+
+document.onkeydown = function(e) {
+  if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73) || (e.ctrlKey && e.keyCode == 85)) {
+    return false;
+  }
+};
+
+const RSS_FEEDS = {
+  "Reuters": "http://feeds.reuters.com/reuters/topNews",
+  "Bellingcat": "https://www.bellingcat.com/feed/",
+  "The Intercept": "https://theintercept.com/feed/?rss",
+  "MintPress": "https://www.mintpressnews.com/feed/",
+  "ProPublica": "https://www.propublica.org/feeds/propublica/main",
+  "Amnesty": "https://www.amnesty.org/en/latest/news/feed/"
+};
+
+async function fetchRSS(url) {
+  try {
+    const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url));
+    const data = await res.json();
+    return data.items ? data.items.slice(0, 10).map(i => i.title) : [];
+  } catch { return []; }
+}
+
+async function updateTicker() {
+  let html = "";
+  for (const [source, url] of Object.entries(RSS_FEEDS)) {
+    const headlines = await fetchRSS(url);
+    headlines.forEach(h => {
+      html += `<span class="ticker-item"><span class="ticker-source">${source}</span>${h}</span>`;
+    });
+  }
+  document.getElementById("ticker").innerHTML = html || '<span class="ticker-item"><span class="ticker-source">GlowTV System</span>Secure transmission established. Awaiting headlines...</span>';
+  document.getElementById("loading-bar").style.display = "none";
+  visualizer.style.opacity = 1;
+  document.getElementById("ticker-wrap").style.opacity = 1;
+  document.getElementById("glow-player-wrap").style.opacity = 1;
+}
+
+updateTicker();
+setInterval(updateTicker, 60000);
+
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "Glowwave‑FM",
+    artist: "GlowTV Network",
+    album: "Lossless Encrypted Stream",
+    artwork: [{ src: "the-glow-network.png", sizes: "512x512", type: "image/png" }]
+  });
+}
+
+function copyEmbedUrl() {
+  const text = "https://wavehub.uk/api/functions/stationStream?uuid=1cf33481-5bc1-4e66-a95f-9d5278542df1";
+  const temp = document.createElement("input");
+  temp.value = text;
+  document.body.appendChild(temp);
+  temp.select();
+  document.execCommand("copy");
+  document.body.removeChild(temp);
+  const btn = document.getElementById("copy-btn");
+  const old = btn.innerText;
+  btn.innerText = "COPIED!";
+  setTimeout(() => btn.innerText = old, 2500);
+}
+</script>
+
+</body>
+</html>
