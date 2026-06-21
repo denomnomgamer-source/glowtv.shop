@@ -52,14 +52,30 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow-x: hidden;
-  padding-top: 5rem;
+  padding-top: 6rem;
 }
 
-.domain-picker {
+.top-nav {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
   z-index: 100;
+}
+
+.rating {
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: rgba(10, 10, 20, 0.9);
+  border: 1px solid var(--glow-accent);
+  box-shadow: 0 0 18px rgba(244, 63, 94, 0.4);
 }
 
 .domain-picker select {
@@ -101,7 +117,7 @@ body {
 }
 
 .intro-title {
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 8vw, 3.2rem);
   font-weight: 900;
   letter-spacing: -1.5px;
   color: #fff;
@@ -109,6 +125,8 @@ body {
   transform: scale(0.85);
   animation: intro-zoom 1.8s forwards;
   text-shadow: 0 0 25px rgba(244, 63, 94, 0.8);
+  text-align: center;
+  padding: 0 20px;
 }
 
 @keyframes intro-zoom {
@@ -123,31 +141,16 @@ body {
   100% { opacity: 0; visibility: hidden; }
 }
 
-.rating {
-  position: absolute;
-  top: 4.5rem;
-  left: 20px;
-  border-radius: 999px;
-  padding: 4px 14px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background: rgba(10, 10, 20, 0.9);
-  border: 1px solid var(--glow-accent);
-  box-shadow: 0 0 18px rgba(244, 63, 94, 0.4);
-  z-index: 10;
-}
-
 .hero {
   text-align: center;
-  padding: 20px;
+  padding: 10px 20px;
   z-index: 2;
   width: 100%;
   max-width: 800px;
 }
 
 h1 {
-  font-size: clamp(3rem, 10vw, 5rem);
+  font-size: clamp(2.2rem, 9vw, 5rem);
   text-transform: uppercase;
   margin: 0;
   letter-spacing: -2px;
@@ -163,6 +166,7 @@ h1 {
   font-weight: 500;
   font-size: 0.85rem;
   color: var(--text-soft);
+  line-height: 1.5;
 }
 
 .meta-data .match {
@@ -177,6 +181,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 1px;
   margin-right: 10px;
+  vertical-align: middle;
 }
 
 .radio-deck {
@@ -186,7 +191,7 @@ h1 {
   text-align: center;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
   max-width: 650px;
-  width: 90%;
+  width: 92%;
   position: relative;
   padding: 30px 22px 26px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -228,8 +233,8 @@ h1 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 12px;
-  gap: 3px;
+  padding: 0 10px;
+  gap: 2px;
 }
 
 .bar {
@@ -300,6 +305,13 @@ audio {
   filter: invert(100%) hue-rotate(180deg) contrast(1.1);
 }
 
+.play-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
 .btn-row {
   display: flex;
   justify-content: space-between;
@@ -310,7 +322,7 @@ audio {
 .btn-pgp {
   background: linear-gradient(135deg, var(--glow-accent), var(--glow-accent-soft));
   color: #fff;
-  padding: 14px 25px;
+  padding: 14px 20px;
   font-size: 0.8rem;
   font-weight: 800;
   border-radius: 12px;
@@ -358,9 +370,11 @@ audio {
 .copy-text {
   color: var(--glow-accent);
   font-weight: 600;
-  word-break: break-all;
   font-size: 0.7rem;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-copy {
@@ -413,24 +427,47 @@ footer {
 ::-webkit-scrollbar-thumb:hover { background: var(--glow-accent); }
 * { scrollbar-width: thin; scrollbar-color: var(--border-soft) #0b0d14; }
 
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .top-nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 1rem;
+  }
+  body { padding-top: 8rem; }
+  .radio-deck { padding: 20px 15px; margin: 20px auto 30px; }
+  .play-controls { flex-direction: column; }
+  .btn-server { width: 100%; padding: 14px 20px; }
+  .btn-row { flex-direction: column; gap: 10px; }
+  #glow-player-wrap { padding: 15px; }
+  .visualizer-container { height: 100px; padding: 0 5px; }
+}
+
+@media (max-width: 400px) {
+  .copy-box { flex-direction: column; align-items: stretch; text-align: center; }
+  .btn-copy { width: 100%; margin-top: 5px; }
+  .copy-text { text-align: center; font-size: 0.65rem; }
+}
+
 </style>
 </head>
 <body oncontextmenu="return false;">
 
-<div class="domain-picker">
-  <select aria-label="Select Glow Network Domain" onchange="if(this.value) window.location.href=this.value;">
-    <option value="" disabled>📡 Select Network</option>
-    <option value="https://glowtv.shop/radio" selected>GlowTV.shop (Current)</option>
-    <option value="https://glowlinks.net/radio">Glowlinks.net</option>
-    <option value="https://glowtv.org/radio">GlowTV.org</option>
-  </select>
+<div class="top-nav">
+  <div class="rating">~TGN Glowwave-FM</div>
+  <div class="domain-picker">
+    <select aria-label="Select Glow Network Domain" onchange="if(this.value) window.location.href=this.value;">
+      <option value="" disabled>📡 Select Network</option>
+      <option value="https://glowtv.shop/radio" selected>GlowTV.shop (Current)</option>
+      <option value="https://glowlinks.net/radio">Glowlinks.net</option>
+      <option value="https://glowtv.org/radio">GlowTV.org</option>
+    </select>
+  </div>
 </div>
 
 <div class="intro-screen">
   <div class="intro-title">GlowTV Network</div>
 </div>
-
-<div class="rating">~TGN Glowwave-FM</div>
 
 <main>
   <div class="hero">
@@ -461,8 +498,8 @@ footer {
     <div id="glow-player-wrap" style="opacity:0; transition:0.6s;">
       <audio id="glow-audio" crossorigin="anonymous" src="https://wavehub.uk/api/functions/stationStream?uuid=1cf33481-5bc1-4e66-a95f-9d5278542df1"></audio>
       
-      <div style="display: flex; gap: 8px; margin-bottom: 8px; width: 100%;">
-        <button id="play-btn" class="btn-pgp" style="flex: 1;">
+      <div class="play-controls">
+        <button id="play-btn" class="btn-pgp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           START PREMIUM STREAM
         </button>
