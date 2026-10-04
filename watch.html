@@ -335,7 +335,7 @@ function loadServers(season = 1, episode = 1) {
 const movieServers = [
     {name: "Alpha", url: `https://ezvidapi.com/embed/movie/${id}?provider=vidsrc`},
     {name: "Bravo", url: `https://vidsrc-embed.ru/embed/movie?tmdb=${id}/`},
-    {name: "Charlie", url: `https://vidrock.ru/movie/${id}`},
+    {name: "Charlie", url: `https://vidrock.to/movie/${id}`},
     {name: "Delta", url: `https://vidlink.pro/movie/${id}`},
     {name: "Echo", url: `https://multiembed.mov/?video_id=${id}&tmdb=1`}
 ];
@@ -345,7 +345,7 @@ const tvServers = [
     {name: "Bravo", url: `https://www.2embed.online/embed/tv/${id}/${season}/${episode}`},
     {name: "Charlie", url: `https://vidsrc-embed.ru/embed/tv?tmdb=${id}&episode=${episode}&season=${season}`},
     {name: "Delta", url: `https://vidlink.pro/tv/${id}/${season}/${episode}`},
-    {name: "Echo", url: `https://vidrock.ru/tv/${id}/${season}/${episode}`}
+    {name: "Echo", url: `https://vidrock.to/tv/${id}/${season}/${episode}`}
 ];
 
     const list = type === "movie" ? movieServers : tvServers;
